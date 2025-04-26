@@ -3,6 +3,8 @@ package com.xcc.mcpx4android
 import android.graphics.Bitmap
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.xcc.mcpx4android.mcp.DeviceInfoMcpServer
+import com.xcc.mcpx4android.mcp.McpClient
 import com.xcc.mcpx4android.mcpx.ChatSession
 import com.xcc.mcpx4android.mcpx.ToolFetcher
 import kotlinx.coroutines.Dispatchers
@@ -20,13 +22,33 @@ class BakingViewModel : ViewModel() {
 
   private lateinit var generativeModel: ChatSession
 
+  private val mcpClient = McpClient()
+  private val deviceInfoMcpServer = DeviceInfoMcpServer().createServer()
+
   init {
     _uiState.value = UiState.Loading
+
+    viewModelScope.launch(Dispatchers.IO) {
+      mcpClient.startClient()
+    }
+    viewModelScope.launch(Dispatchers.IO) {
+      mcpClient.connectServer(deviceInfoMcpServer)
+    }
     viewModelScope.launch {
       withContext(Dispatchers.IO) {
-        generativeModel = ChatSession(ToolFetcher.fetchFunctions())
+        generativeModel = ChatSession(ToolFetcher.fetchFunctions(), mcpClient).apply {
+          init()
+        }
         _uiState.value = UiState.Initial
       }
+    }
+  }
+
+  override fun onCleared() {
+    super.onCleared()
+    viewModelScope.launch {
+      mcpClient.closeClient()
+      deviceInfoMcpServer.close()
     }
   }
 

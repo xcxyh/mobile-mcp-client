@@ -63,4 +63,11 @@ dependencies {
 
     implementation(libs.mcpx4j)
     implementation(libs.jackson.databind)
+    implementation(libs.mcp.kotlin.sdk) {
+        exclude(group = "io.ktor", module = "ktor-server-websockets")
+        exclude(group = "io.ktor", module = "ktor-client-cio")
+        exclude(group = "io.ktor", module = "ktor-server-sse")
+        exclude(group = "io.ktor", module = "ktor-server-cio")
+    }
+    implementation(libs.gson)
 }

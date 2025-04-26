@@ -1,31 +1,36 @@
 package com.xcc.mcpx4android.mcpx
 
+import com.google.ai.client.generativeai.Chat
 import com.google.ai.client.generativeai.GenerativeModel
 import com.google.ai.client.generativeai.type.FunctionResponsePart
 import com.google.ai.client.generativeai.type.Tool
 import com.google.ai.client.generativeai.type.content
 import com.xcc.mcpx4android.BuildConfig
+import com.xcc.mcpx4android.mcp.DeviceInfoMcpServer
+import com.xcc.mcpx4android.mcp.McpClient
 
 class ChatSession(
     private val functionRepository: FunctionRepository,
+    private val mcpClient: McpClient,
 ) {
 
-    private val serverTool = Tool(functionRepository.functionDeclarations.values.toList())
+    private lateinit var chat: Chat
 
-    private val clientFunctionRepository = ClientFunctionRepository()
-    private val localTool = Tool(clientFunctionRepository.functionDeclarations.values.toList())
+    suspend fun init() {
+      val tool = mcpClient.getTool()
+      val serverTool = Tool(functionRepository.functionDeclarations.values.toList())
 
-    private val generativeModel = GenerativeModel(
-        // Use Gemini 2.0
-        modelName = "gemini-2.0-flash-exp",
-        // Use the API Key we configured in local.properties
-        apiKey = BuildConfig.apiKey,
-        // Plug our tools
-        tools = listOf(serverTool, localTool),
-        // Configure a useful system prompt.
-        systemInstruction = content {
-            text(
-                """
+      val generativeModel = GenerativeModel(
+            // Use Gemini 2.0
+            modelName = "gemini-2.0-flash-exp",
+            // Use the API Key we configured in local.properties
+            apiKey = BuildConfig.apiKey,
+            // Plug our tools
+            tools = listOf(serverTool, tool),
+            // Configure a useful system prompt.
+            systemInstruction = content {
+                text(
+                    """
 You are a helpful AI assistant with access to various external tools and APIs. Your goal is to complete tasks thoroughly and autonomously by making full use of these tools. Here are your core operating principles:
 
 1.  **Take initiative** - Don't wait for user permission to use tools. If a tool would help complete the task, use it immediately.
@@ -37,12 +42,12 @@ You are a helpful AI assistant with access to various external tools and APIs. Y
 
 Your responses should focus on results rather than asking questions. Only ask the user for clarification if the task itself is unclear or impossible with the tools available.
 """
-            )
-        }
-    )
-
-    // Initiate a chat session
-    private val chat = generativeModel.startChat()
+                )
+            }
+        )
+        // Initiate a chat session
+        chat = generativeModel.startChat()
+    }
 
     // Notice this function does I/O, hence the `suspend`.
     suspend fun send(prompt: String): String? {
@@ -61,7 +66,7 @@ Your responses should focus on results rather than asking questions. Only ask th
                     FunctionResponsePart(it.name, toolResult)
                 } else {
                     // Lookup the function in the repository and invoke it
-                    val toolResult = clientFunctionRepository.call(it.name, it.args)
+                    val toolResult = mcpClient.call(it.name, it.args)
                     // Return the result for that specific function
                     FunctionResponsePart(it.name, toolResult)
                 }
