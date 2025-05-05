@@ -52,10 +52,7 @@ class BakingViewModel : ViewModel() {
     }
   }
 
-  fun sendPrompt(
-    bitmap: Bitmap,
-    prompt: String
-  ) {
+  fun sendPrompt(prompt: String) {
     _uiState.value = UiState.Loading
 
     viewModelScope.launch(Dispatchers.IO) {

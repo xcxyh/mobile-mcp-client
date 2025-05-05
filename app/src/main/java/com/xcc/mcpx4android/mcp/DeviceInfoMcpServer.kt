@@ -33,19 +33,6 @@ class DeviceInfoMcpServer: IMcpServer {
         return server
     }
 
-    override fun convertToGeminiTool(): com.google.ai.client.generativeai.type.Tool {
-        return com.google.ai.client.generativeai.type.Tool(
-            functionDeclarations = listOf(
-                FunctionDeclaration(
-                    name = "get_device_info",
-                    description = "获取当前设备基本信息",
-                    parameters = listOf(),
-                    requiredParameters = listOf()
-                )
-            )
-        )
-    }
-
     private fun registerTools(server: Server) {
         server.addTool(
             name = "get_device_info",
