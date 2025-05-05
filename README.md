@@ -1,12 +1,12 @@
 # MCPx4Android
 
-This is an Android project that demonstrates the use of the Model Context Protocol (MCP) for AI-assisted baking.
+This is an Android project that demonstrates the use of the Model Context Protocol (MCP) for AI-assisted ChatBot.
 
 <img src="./snapshots/Screenshot_20250505_175028.png" alt="img" style="width: 33%;" />
 
 ## Overview
 
-The project provides a chat interface where users can interact with an AI assistant to get help with baking-related tasks. The AI assistant can call tools to fetch information and provide relevant suggestions.
+The project provides a chat interface where users can interact with an AI assistant to get help with some tasks. The AI assistant can call tools to fetch information and provide relevant suggestions.
 
 ## Key Features
 
@@ -19,8 +19,8 @@ The project provides a chat interface where users can interact with an AI assist
 
 The project follows a Model-View-ViewModel (MVVM) architecture.
 
-*   **View**: `BakingScreen.kt` - Implements the UI using Jetpack Compose.
-*   **ViewModel**: `BakingViewModel.kt` - Manages the UI state and interacts with the model.
+*   **View**: `MainChatScreen.kt` - Implements the UI using Jetpack Compose.
+*   **ViewModel**: `MainChatViewModel.kt` - Manages the UI state and interacts with the model.
 *   **Model**: `ChatSession.kt` - Handles the AI assistant and tool execution logic.
 
 ## MCP Servers
@@ -29,12 +29,16 @@ The project uses the following MCP servers:
 
 *   `DeviceInfoMcpServer` - Provides device information to the AI assistant.
 
+## MCP Tools
+
+* `get_device_info` - Fetches device information from the MCP server.
+* `fetch` - Fetches information from web based on user's input.
+
 ## Dependencies
 
 *   Jetpack Compose
 *   Kotlin Coroutines
 *   MCP4J
-*   Jackson Databind
 *   MCP Kotlin SDK
 *   Gson
 
