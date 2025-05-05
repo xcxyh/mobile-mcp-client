@@ -2,7 +2,7 @@
 
 This is an Android project that demonstrates the use of the Model Context Protocol (MCP) for AI-assisted baking.
 
-<img src="./snapshots/Screenshot_20250505_175028.png" alt="img" style="zoom: 33%;" />
+<img src="./snapshots/Screenshot_20250505_175028.png" alt="img" style="width: 33%;" />
 
 ## Overview
 
