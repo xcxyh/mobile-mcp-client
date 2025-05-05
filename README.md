@@ -47,8 +47,9 @@ The project uses the following MCP servers:
 1.  Clone the repository.
 2.  Open the project in Android Studio.
 3.  Build and run the project on an Android device or emulator.
-4.  run this command in your computer: npx --yes -p @dylibso/mcpx@latest gen-session
-5.  get the `Session` to mcpRunKey in local.properties file.
+4.  get the Google Gemma API key from your Google Cloud Console and add it to `apiKey` in the `local.properties` file.
+5.  run this command in your computer: npx --yes -p @dylibso/mcpx@latest gen-session
+6.  get the `Session` to `mcpRunKey` in local.properties file.
 
 ## License
 
