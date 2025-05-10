@@ -1,4 +1,4 @@
-package com.xcc.mcpx4android.mcpx
+package com.xcc.mcpx4android.domain.repository
 
 import android.util.Log
 import com.dylibso.mcpx4j.core.McpxTool

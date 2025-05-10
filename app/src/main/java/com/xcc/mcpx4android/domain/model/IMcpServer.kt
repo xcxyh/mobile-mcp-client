@@ -1,4 +1,4 @@
-package com.xcc.mcpx4android.mcp
+package com.xcc.mcpx4android.domain.model
 
 import io.modelcontextprotocol.kotlin.sdk.server.Server
 

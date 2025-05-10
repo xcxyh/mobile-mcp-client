@@ -1,4 +1,4 @@
-package com.xcc.mcpx4android.mcpx
+package com.xcc.mcpx4android.utils
 
 import com.google.ai.client.generativeai.type.Schema
 import org.json.JSONObject

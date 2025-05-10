@@ -1,4 +1,4 @@
-package com.xcc.mcpx4android.mcp
+package com.xcc.mcpx4android.data.datasource
 
 import io.modelcontextprotocol.kotlin.sdk.JSONRPCMessage
 import io.modelcontextprotocol.kotlin.sdk.shared.AbstractTransport

@@ -1,13 +1,17 @@
-package com.xcc.mcpx4android
+package com.xcc.mcpx4android.presentation.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.xcc.mcpx4android.mcp.DeviceInfoMcpServer
-import com.xcc.mcpx4android.mcp.McpClient
-import com.xcc.mcpx4android.mcpx.ChatResponseState
-import com.xcc.mcpx4android.mcpx.ChatSession
-import com.xcc.mcpx4android.mcpx.ToolFetcher
+import com.xcc.mcpx4android.presentation.model.AiMessageState
+import com.xcc.mcpx4android.presentation.model.ChatMessage
+import com.xcc.mcpx4android.presentation.model.Sender
+import com.xcc.mcpx4android.presentation.model.UiState
+import com.xcc.mcpx4android.domain.model.DeviceInfoMcpServer
+import com.xcc.mcpx4android.data.datasource.McpClient
+import com.xcc.mcpx4android.domain.usecases.ChatResponseState
+import com.xcc.mcpx4android.domain.usecases.ChatSession
+import com.xcc.mcpx4android.data.datasource.ToolFetcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

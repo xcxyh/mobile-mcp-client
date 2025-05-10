@@ -1,4 +1,4 @@
-package com.xcc.mcpx4android
+package com.xcc.mcpx4android.presentation.model
 
 import java.util.UUID
 

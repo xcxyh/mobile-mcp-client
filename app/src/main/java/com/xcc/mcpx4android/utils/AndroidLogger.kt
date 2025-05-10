@@ -1,4 +1,4 @@
-package com.xcc.mcpx4android.mcpx
+package com.xcc.mcpx4android.utils
 
 import android.util.Log
 import com.dylibso.chicory.log.Logger

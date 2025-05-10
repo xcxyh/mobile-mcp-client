@@ -1,13 +1,13 @@
-package com.xcc.mcpx4android.mcpx
+package com.xcc.mcpx4android.domain.usecases
 
 import com.google.ai.client.generativeai.Chat
 import com.google.ai.client.generativeai.GenerativeModel
-import com.google.ai.client.generativeai.type.FunctionCallPart
 import com.google.ai.client.generativeai.type.FunctionResponsePart
 import com.google.ai.client.generativeai.type.Tool
 import com.google.ai.client.generativeai.type.content
 import com.xcc.mcpx4android.BuildConfig
-import com.xcc.mcpx4android.mcp.McpClient
+import com.xcc.mcpx4android.data.datasource.McpClient
+import com.xcc.mcpx4android.domain.repository.FunctionRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import org.json.JSONObject

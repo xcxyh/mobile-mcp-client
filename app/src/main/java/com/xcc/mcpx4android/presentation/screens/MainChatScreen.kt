@@ -1,4 +1,4 @@
-package com.xcc.mcpx4android
+package com.xcc.mcpx4android.presentation.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -43,6 +43,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.xcc.mcpx4android.presentation.viewmodel.MainChatViewModel
+import com.xcc.mcpx4android.R
+import com.xcc.mcpx4android.presentation.model.AiMessageState
+import com.xcc.mcpx4android.presentation.model.ChatMessage
+import com.xcc.mcpx4android.presentation.model.Sender
+import com.xcc.mcpx4android.presentation.model.UiState
 import kotlinx.coroutines.launch
 
 @Composable

@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.google.android.libraries.mapsplatform.secrets.gradle.plugin)
+    id("kotlin-parcelize")
 }
 
 android {
@@ -70,4 +71,20 @@ dependencies {
         exclude(group = "io.ktor", module = "ktor-server-cio")
     }
     implementation(libs.gson)
+
+    // Coroutines
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.kotlinx.coroutines.core)
+
+    // Koin for dependency injection
+    implementation(libs.koin.android)
+    implementation(libs.koin.androidx.compose)
+
+    // Room for local database
+    implementation(libs.room.runtime)
+    implementation(libs.room.ktx)
+    annotationProcessor(libs.room.compiler)
+
+    // DataStore
+    implementation(libs.datastore.preferences)
 }

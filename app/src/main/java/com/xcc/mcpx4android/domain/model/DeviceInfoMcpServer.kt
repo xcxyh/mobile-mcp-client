@@ -1,7 +1,6 @@
-package com.xcc.mcpx4android.mcp
+package com.xcc.mcpx4android.domain.model
 
 import android.os.Build
-import com.google.ai.client.generativeai.type.FunctionDeclaration
 import io.modelcontextprotocol.kotlin.sdk.CallToolResult
 import io.modelcontextprotocol.kotlin.sdk.Implementation
 import io.modelcontextprotocol.kotlin.sdk.ServerCapabilities

@@ -1,10 +1,10 @@
-package com.xcc.mcpx4android.mcp
+package com.xcc.mcpx4android.data.datasource
 
 import android.util.Log
 import com.google.ai.client.generativeai.type.FunctionDeclaration
 import com.google.ai.client.generativeai.type.Tool
 import com.google.gson.Gson
-import com.xcc.mcpx4android.mcpx.ParsedSchema
+import com.xcc.mcpx4android.utils.ParsedSchema
 import io.modelcontextprotocol.kotlin.sdk.ClientCapabilities
 import io.modelcontextprotocol.kotlin.sdk.Implementation
 import io.modelcontextprotocol.kotlin.sdk.client.Client
